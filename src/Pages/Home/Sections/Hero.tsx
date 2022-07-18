@@ -3,7 +3,7 @@ import styled from "styled-components";
 const Hero = () => {
   return (
     <HeroContainer id="hero" className=" bg-no-repeat bg-cover">
-      <div className="hero pt-[30rem] pb-40 ">
+      <div className="hero pt-[20rem] pb-40 ">
         <div className="hero-content text-center">
           <div className="px-56">
             <h1 className="text-6xl font-bold text-white leading-tight">
@@ -14,7 +14,7 @@ const Hero = () => {
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
               et a id nisi.
             </p>
-            <button className="btn btn-primary">Get Started</button>
+            <button className="btn btn-primary">Donate Now</button>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 const Header = () => {
   return (
     <header className="bg-base-100 mb-[-10rem]">
-      <div className="navbar container mx-auto">
+      <div className="navbar container mx-auto py-10">
         <div className="flex-1">
           <a href="/" className="btn btn-ghost normal-case text-xl text-white">
             Support
@@ -83,6 +83,9 @@ const Header = () => {
                 <a href="/">Logout</a>
               </li>
             </ul>
+          </div>
+          <div className="mx-10">
+            <button className="btn btn-accent">Being Volunteer</button>
           </div>
         </div>
       </div>
