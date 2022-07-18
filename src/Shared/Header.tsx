@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 const Header = () => {
   return (
     <header className="bg-base-100 mb-[-10rem]">
@@ -10,19 +12,19 @@ const Header = () => {
         <div className="flex-none">
           <ul className="menu menu-horizontal p-0">
             <li>
-              <a className="text-white" href="/">
+              <NavLink to="/" className="text-white">
                 Home
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a className="text-white" href="/">
+              <NavLink to={"/about"} className="text-white">
                 About
-              </a>
+              </NavLink>
             </li>
             <li>
-              <a className="text-white" href="/">
+              <NavLink to={"/contact"} className="text-white">
                 Contact
-              </a>
+              </NavLink>
             </li>
           </ul>
           <div className="dropdown dropdown-end">
