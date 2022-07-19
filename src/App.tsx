@@ -8,6 +8,7 @@ import SavedEvents from "./Pages/Dashboard/SavedEvents/SavedEvents";
 import Settings from "./Pages/Dashboard/Settings/Settings";
 import TotalDonations from "./Pages/Dashboard/TotalDonations/TotalDonations";
 import TotalEvents from "./Pages/Dashboard/TotalEvents/TotalEvents";
+import Volunteers from "./Pages/Dashboard/Volunteers/Volunteers";
 import Card from "./Pages/EventDetails/Card";
 import EventDetails from "./Pages/EventDetails/EventDetails";
 import MobileBanking from "./Pages/EventDetails/MobileBanking";
@@ -46,6 +47,7 @@ function App() {
           <Route path="total-events" element={<TotalEvents />} />
           <Route path="donations" element={<TotalDonations />} />
           <Route path="leaderboard" element={<LeaderBoard />} />
+          <Route path="volunteers" element={<Volunteers />} />
           <Route path="settings" element={<Settings />} />
         </Route>
       </Routes>
