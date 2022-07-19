@@ -1,33 +1,59 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 const Header = () => {
+  const { pathname } = useLocation();
   return (
     <header className="bg-base-100 mb-[-10rem]">
       <div className="navbar container mx-auto py-10">
         <div className="flex-1">
-          <a href="/" className="btn btn-ghost normal-case text-xl text-white">
+          <Link
+            to="/"
+            className={`btn btn-ghost normal-case text-xl ${
+              pathname.includes("login") ? "text-black" : "text-white"
+            } `}
+          >
             Support
-          </a>
+          </Link>
         </div>
         <div className="flex-none">
           <ul className="menu menu-horizontal p-0">
             <li>
-              <NavLink to="/" className="text-white">
+              <NavLink
+                to="/"
+                className={`${
+                  pathname.includes("login") ? "text-black" : "text-white"
+                }`}
+              >
                 Home
               </NavLink>
             </li>
             <li>
-              <NavLink to={"/events"} className="text-white">
+              <NavLink
+                to={"/events"}
+                className={`${
+                  pathname.includes("login") ? "text-black" : "text-white"
+                }`}
+              >
                 Events
               </NavLink>
             </li>
             <li>
-              <NavLink to={"/about"} className="text-white">
+              <NavLink
+                to={"/about"}
+                className={`${
+                  pathname.includes("login") ? "text-black" : "text-white"
+                }`}
+              >
                 About
               </NavLink>
             </li>
             <li>
-              <NavLink to={"/contact"} className="text-white">
+              <NavLink
+                to={"/contact"}
+                className={`${
+                  pathname.includes("login") ? "text-black" : "text-white"
+                }`}
+              >
                 Contact
               </NavLink>
             </li>

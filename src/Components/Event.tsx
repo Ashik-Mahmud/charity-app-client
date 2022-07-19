@@ -1,5 +1,6 @@
 import { FaDonate } from "react-icons/fa";
 import { TbJewishStar } from "react-icons/tb";
+import { Link } from "react-router-dom";
 const Event = () => {
   return (
     <div className=" rounded p-1 overflow-hidden">
@@ -22,12 +23,12 @@ const Event = () => {
         </div>
 
         <div className="flex items-center gap-2 mt-2">
-          <button className="btn btn-sm btn-ghost rounded flex items-center gap-1">
+          <Link
+            to="/event-details/1"
+            className="btn btn-sm btn-ghost rounded flex items-center gap-1"
+          >
             <FaDonate /> Donate
-          </button>
-          <a href="/" className="btn btn-sm btn-ghost">
-            Details
-          </a>
+          </Link>
         </div>
       </div>
     </div>
