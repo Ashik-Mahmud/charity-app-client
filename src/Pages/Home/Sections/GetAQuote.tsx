@@ -1,6 +1,6 @@
 const GetAQuote = () => {
   return (
-    <div className="py-32 bg-zinc-50 mt-30">
+    <div className="py-32 bg-zinc-50 my-30">
       <div className="container mx-auto">
         <div className="flex flex-wrap justify-between items-center">
           <div>

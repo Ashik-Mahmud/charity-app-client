@@ -2,7 +2,7 @@ import Event from "../../../Components/Event";
 
 const RecentEvents = () => {
   return (
-    <div>
+    <div className="pb-20">
       <div className="container mx-auto">
         <div className="title text-center my-10">
           <h3 className="text-center text-4xl font-bold ">Recent Events</h3>
