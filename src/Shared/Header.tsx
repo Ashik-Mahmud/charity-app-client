@@ -92,8 +92,11 @@ const Header = () => {
             </ul>
           </div> */}
           <div className="mx-10">
-            <Link to="/register" className="btn btn-accent">
+            {/*    <Link to="/register" className="btn btn-accent">
               Being Volunteer
+            </Link> */}
+            <Link to="/login" className="btn btn-info">
+              Login
             </Link>
           </div>
         </div>

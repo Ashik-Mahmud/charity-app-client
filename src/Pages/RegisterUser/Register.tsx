@@ -1,9 +1,9 @@
 import { MdOutlineArrowBackIos } from "react-icons/md";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Register = () => {
   const navigate = useNavigate();
   return (
-    <section className="grid min-h-screen place-items-center">
+    <section className="grid mt-24 place-items-center">
       <form
         action="/"
         className="sm:w-1/3 bg-slate-50 p-10 rounded-lg relative"
@@ -19,7 +19,10 @@ const Register = () => {
         </h3>
         <div className="form-control w-full">
           <label className="label">
-            <span className="label-text">What is your name?</span>
+            <span className="label-text">
+              What is your name?{" "}
+              <small className="text-red-500 text-md">*</small>
+            </span>
           </label>
           <input
             type="text"
@@ -29,7 +32,9 @@ const Register = () => {
         </div>
         <div className="form-control w-full">
           <label className="label">
-            <span className="label-text">Email</span>
+            <span className="label-text">
+              Email <small className="text-red-500 text-md">*</small>
+            </span>
           </label>
           <input
             type="email"
@@ -68,7 +73,9 @@ const Register = () => {
         </div>
         <div className="form-control w-full">
           <label className="label">
-            <span className="label-text">Username</span>
+            <span className="label-text">
+              Username <small className="text-red-500 text-md">*</small>
+            </span>
           </label>
           <input
             type="text"
@@ -78,7 +85,9 @@ const Register = () => {
         </div>
         <div className="form-control w-full">
           <label className="label">
-            <span className="label-text">Password</span>
+            <span className="label-text">
+              Password <small className="text-red-500 text-md">*</small>
+            </span>
           </label>
           <input
             type="password"
@@ -91,6 +100,12 @@ const Register = () => {
             Register as Volunteer
           </button>
         </div>
+        <Link
+          to="/login"
+          className="block text-center link link-hover mt-4 text-sm"
+        >
+          Login as Volunteer
+        </Link>
       </form>
     </section>
   );
