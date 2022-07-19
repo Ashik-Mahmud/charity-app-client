@@ -4,6 +4,7 @@ import Contact from "./Pages/Contact/Contact";
 import AddEvent from "./Pages/Dashboard/AddEvent/AddEvent";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import LeaderBoard from "./Pages/Dashboard/Leaderboard/Leaderboard";
+import Overview from "./Pages/Dashboard/Overview";
 import SavedEvents from "./Pages/Dashboard/SavedEvents/SavedEvents";
 import Settings from "./Pages/Dashboard/Settings/Settings";
 import TotalDonations from "./Pages/Dashboard/TotalDonations/TotalDonations";
@@ -42,6 +43,8 @@ function App() {
 
         {/* Dashboard Routes */}
         <Route path="/dashboard" element={<Dashboard />}>
+          <Route index element={<Overview />} />
+          <Route path="dashboard" element={<Overview />} />
           <Route path="add-event" element={<AddEvent />} />
           <Route path="saved-events" element={<SavedEvents />} />
           <Route path="total-events" element={<TotalEvents />} />

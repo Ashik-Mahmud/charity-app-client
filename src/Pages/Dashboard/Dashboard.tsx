@@ -17,7 +17,10 @@ const Dashboard = () => {
                   >
                     <MdOutlineDashboard />
                   </label>
-                  <Link className="btn btn-ghost normal-case text-xl" to="/">
+                  <Link
+                    className="btn btn-ghost normal-case text-xl"
+                    to="/dashboard"
+                  >
                     Dashboard
                   </Link>
                 </div>
