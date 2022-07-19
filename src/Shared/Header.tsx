@@ -57,6 +57,16 @@ const Header = () => {
                 Contact
               </NavLink>
             </li>
+            <li>
+              <NavLink
+                to={"/dashboard"}
+                className={`${
+                  pathname.includes("login") ? "text-black" : "text-white"
+                }`}
+              >
+                Dashboard
+              </NavLink>
+            </li>
           </ul>
           {/*    <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle">

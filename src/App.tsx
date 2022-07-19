@@ -1,6 +1,7 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import About from "./Pages/About/About";
 import Contact from "./Pages/Contact/Contact";
+import Dashboard from "./Pages/Dashboard/Dashboard";
 import Card from "./Pages/EventDetails/Card";
 import EventDetails from "./Pages/EventDetails/EventDetails";
 import MobileBanking from "./Pages/EventDetails/MobileBanking";
@@ -15,7 +16,8 @@ function App() {
   return (
     <>
       {!pathname.includes("register") &&
-        !pathname.includes("event-details") && <Header />}
+        !pathname.includes("event-details") &&
+        !pathname.includes("dashboard") && <Header />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
@@ -23,13 +25,18 @@ function App() {
         <Route path="/events" element={<Events />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+
+        {/* Nested Routes  */}
         <Route path="/event-details/:id" element={<EventDetails />}>
           <Route index={true} element={<Card />} />
           <Route path="card" element={<Card />} />
           <Route path="mobile-banking" element={<MobileBanking />} />
         </Route>
+
+        {/* Dashboard Routes */}
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
-      <Footer />
+      {!pathname.includes("dashboard") && <Footer />}
     </>
   );
 }
