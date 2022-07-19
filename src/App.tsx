@@ -1,7 +1,13 @@
 import { Route, Routes, useLocation } from "react-router-dom";
 import About from "./Pages/About/About";
 import Contact from "./Pages/Contact/Contact";
+import AddEvent from "./Pages/Dashboard/AddEvent/AddEvent";
 import Dashboard from "./Pages/Dashboard/Dashboard";
+import LeaderBoard from "./Pages/Dashboard/Leaderboard/Leaderboard";
+import SavedEvents from "./Pages/Dashboard/SavedEvents/SavedEvents";
+import Settings from "./Pages/Dashboard/Settings/Settings";
+import TotalDonations from "./Pages/Dashboard/TotalDonations/TotalDonations";
+import TotalEvents from "./Pages/Dashboard/TotalEvents/TotalEvents";
 import Card from "./Pages/EventDetails/Card";
 import EventDetails from "./Pages/EventDetails/EventDetails";
 import MobileBanking from "./Pages/EventDetails/MobileBanking";
@@ -34,7 +40,14 @@ function App() {
         </Route>
 
         {/* Dashboard Routes */}
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard />}>
+          <Route path="add-event" element={<AddEvent />} />
+          <Route path="saved-events" element={<SavedEvents />} />
+          <Route path="total-events" element={<TotalEvents />} />
+          <Route path="donations" element={<TotalDonations />} />
+          <Route path="leaderboard" element={<LeaderBoard />} />
+          <Route path="settings" element={<Settings />} />
+        </Route>
       </Routes>
       {!pathname.includes("dashboard") && <Footer />}
     </>

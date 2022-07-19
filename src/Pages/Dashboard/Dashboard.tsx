@@ -1,5 +1,5 @@
 import { MdOutlineDashboard } from "react-icons/md";
-import { Link, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 
 const Dashboard = () => {
   return (
@@ -74,22 +74,22 @@ const Dashboard = () => {
                 </div>
               </li>
               <li>
-                <Link to="/dashboard">Add New Event</Link>
+                <NavLink to="/dashboard/add-event">Add New Event</NavLink>
               </li>
               <li>
-                <Link to="/dashboard">Total Events</Link>
+                <NavLink to="/dashboard/total-events">Total Events</NavLink>
               </li>
               <li>
-                <Link to="/dashboard">Saved Events</Link>
+                <NavLink to="/dashboard/saved-events">Saved Events</NavLink>
               </li>
               <li>
-                <Link to="/dashboard">All Donations</Link>
+                <NavLink to="/dashboard/donations">All Donations</NavLink>
               </li>
               <li>
-                <Link to="/dashboard">Leader board</Link>
+                <NavLink to="/dashboard/leaderboard">Leader board</NavLink>
               </li>
               <li>
-                <Link to="/dashboard">Settings</Link>
+                <NavLink to="/dashboard/settings">Settings</NavLink>
               </li>
             </ul>
           </div>
