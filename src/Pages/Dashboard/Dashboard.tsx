@@ -72,9 +72,9 @@ const Dashboard = () => {
 
             <ul className="menu p-4 overflow-y-auto w-80 bg-slate-900 text-white ">
               <li>
-                <div>
+                <Link to="/">
                   <span className="text-3xl font-semibold">Support</span>
-                </div>
+                </Link>
               </li>
               <li>
                 <NavLink to="/dashboard/add-event">Add New Event</NavLink>
