@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
 import { MdOutlineArrowBackIos } from "react-icons/md";
@@ -33,22 +34,37 @@ const Register = () => {
   };
 
   /* submitting the form */
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (!registerForm.name) return toast.error("Name is required");
     if (!registerForm.email) return toast.error("Email is required");
     if (!registerForm.username) return toast.error("Username is required");
     if (!registerForm.password) return toast.error("Password is required");
-    console.log(registerForm);
-    event.currentTarget.reset();
-    setRegisterForm({
-      name: "",
-      email: "",
-      phone: "",
-      gender: "",
-      username: "",
-      password: "",
-    });
+    const newRegisterFormData = {
+      ...registerForm,
+      createdAt:
+        new Date().toDateString() + " at " + new Date().toLocaleTimeString(),
+    };
+
+    await axios
+      .post(`http://localhost:5000/api/register`, newRegisterFormData)
+      .then(({ data }) => {
+        if (data.success) {
+          navigate("/login");
+          toast.success(data.message);
+          setRegisterForm({
+            name: "",
+            email: "",
+            phone: "",
+            gender: "",
+            username: "",
+            password: "",
+          });
+        }
+      })
+      .catch((err) => {
+        toast.error(err?.response?.data.message);
+      });
   };
 
   return (
