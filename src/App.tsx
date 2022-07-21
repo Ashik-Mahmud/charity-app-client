@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
 import Cookies from "universal-cookie";
-import { setUser } from "./Features/LoginUser/LoginUserSlice";
+import RequireAuth from "./Auth/RequireAuth";
+import { getUser, setUser } from "./Features/LoginUser/LoginUserSlice";
 import About from "./Pages/About/About";
 import Contact from "./Pages/Contact/Contact";
 import AddEvent from "./Pages/Dashboard/AddEvent/AddEvent";
@@ -31,7 +32,9 @@ function App() {
   const loggedInUser = cookies.get("user");
 
   useEffect(() => {
+    dispatch(getUser(true));
     dispatch(setUser(loggedInUser));
+    dispatch(getUser(false));
   }, [dispatch, loggedInUser]);
 
   const { pathname } = useLocation();
@@ -56,7 +59,14 @@ function App() {
         </Route>
 
         {/* Dashboard Routes */}
-        <Route path="/dashboard" element={<Dashboard />}>
+        <Route
+          path="/dashboard"
+          element={
+            <RequireAuth>
+              <Dashboard />
+            </RequireAuth>
+          }
+        >
           <Route index element={<Overview />} />
           <Route path="dashboard" element={<Overview />} />
           <Route path="add-event" element={<AddEvent />} />

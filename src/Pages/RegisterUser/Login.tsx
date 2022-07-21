@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { MdOutlineArrowBackIos } from "react-icons/md";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Cookies from "universal-cookie";
 
 const Login = () => {
@@ -10,6 +10,8 @@ const Login = () => {
   /* init cookies */
   const cookies = new Cookies();
 
+  const location: any = useLocation();
+  const from = location?.state?.from?.pathname || "/";
   /*  pick input values from */
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -26,7 +28,7 @@ const Login = () => {
         if (success) {
           cookies.set("token", token, { path: "/" });
           cookies.set("user", user, { path: "/" });
-          navigate("/dashboard");
+          navigate(from, { replace: true });
         }
       })
       .catch((err) => toast.error(err.response.data.message));

@@ -14,21 +14,26 @@ export interface initStateInterface {
 
 interface initStateTypes {
   user: initStateInterface | {};
+  loading: boolean;
 }
 
 const initialState: initStateTypes = {
   user: {},
+  loading: false,
 };
 
 const loginUserSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<initStateInterface, any>) => {
+    getUser: (state, action: PayloadAction<boolean>) => {
+      state.loading = action.payload;
+    },
+    setUser: (state, action: PayloadAction<initStateInterface>) => {
       state.user = action.payload;
     },
   },
 });
 
 export default loginUserSlice.reducer;
-export const { setUser } = loginUserSlice.actions;
+export const { setUser, getUser } = loginUserSlice.actions;
