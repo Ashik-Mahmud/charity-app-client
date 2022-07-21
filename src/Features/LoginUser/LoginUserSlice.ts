@@ -1,19 +1,17 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 export interface initStateInterface {
-  name: string;
-  email: string;
+  name?: string;
+  email?: string;
   phone?: string;
   gender?: string;
-  username: string;
-  createdAt: string;
-  password: string;
-  _v: number;
-  _id: string;
+  username?: string;
+  createdAt?: string;
+  password?: string;
 }
 
 interface initStateTypes {
-  user: initStateInterface | {};
+  user: initStateInterface | null;
   loading: boolean;
 }
 

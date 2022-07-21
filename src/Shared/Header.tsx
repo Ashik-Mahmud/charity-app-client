@@ -1,10 +1,19 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
+import Cookies from "universal-cookie";
 import { RootState, useAppSelector } from "../Store/store";
-
 const Header = () => {
+  const navigate = useNavigate();
+  const cookie = new Cookies();
   const { pathname } = useLocation();
+
   const { user } = useAppSelector((state: RootState) => state.loginUser);
-  console.log(user);
+
+  /* Handle Log Out  */
+  const handleLogOut = () => {
+    cookie.remove("token");
+    cookie.remove("user");
+    navigate("/login");
+  };
   return (
     <header className="bg-base-100 mb-[-10rem]">
       <div className="navbar container mx-auto py-10">
@@ -81,7 +90,7 @@ const Header = () => {
                   className="btn btn-ghost btn-circle avatar flex items-center justify-center "
                 >
                   <div className="w-10 h-10 pt-1 rounded-full text-xl  text-white bg-gray-800">
-                    A
+                    {user?.name?.slice(0, 1)}
                   </div>
                 </label>
                 <ul
@@ -89,16 +98,16 @@ const Header = () => {
                   className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
                 >
                   <li>
-                    <a href="/" className="justify-between">
+                    <Link to="/profile" className="justify-between">
                       Profile
                       <span className="badge">New</span>
-                    </a>
+                    </Link>
                   </li>
                   <li>
-                    <a href="/">Settings</a>
+                    <Link to="/dashboard/settings">Settings</Link>
                   </li>
                   <li>
-                    <a href="/">Logout</a>
+                    <button onClick={handleLogOut}>Logout</button>
                   </li>
                 </ul>
               </div>{" "}
@@ -107,7 +116,9 @@ const Header = () => {
 
           <div className="mx-10">
             {user ? (
-              <button className="btn btn-error btn-md">Logout</button>
+              <button onClick={handleLogOut} className="btn btn-error btn-md">
+                Logout
+              </button>
             ) : (
               <Link to="/register" className="btn btn-accent">
                 Being Volunteer

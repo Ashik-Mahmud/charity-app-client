@@ -1,11 +1,22 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { MdOutlineArrowBackIos } from "react-icons/md";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useAppSelector } from "../../Store/store";
 const Register = () => {
   const navigate = useNavigate();
 
+  const { user } = useAppSelector((state) => state.loginUser);
+
+  const location: any = useLocation();
+  const from = location?.state?.from?.pathname || "/";
+
+  useEffect(() => {
+    if (user) {
+      navigate(from, { replace: true });
+    }
+  }, [user, navigate, from]);
   /* form types */
   type inputDataTypes = {
     name: string;

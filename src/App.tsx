@@ -9,6 +9,7 @@ import AddEvent from "./Pages/Dashboard/AddEvent/AddEvent";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import LeaderBoard from "./Pages/Dashboard/Leaderboard/Leaderboard";
 import Overview from "./Pages/Dashboard/Overview";
+import Profile from "./Pages/Dashboard/Profile/Profile";
 import SavedEvents from "./Pages/Dashboard/SavedEvents/SavedEvents";
 import Settings from "./Pages/Dashboard/Settings/Settings";
 import TotalDonations from "./Pages/Dashboard/TotalDonations/TotalDonations";
@@ -75,6 +76,7 @@ function App() {
           <Route path="donations" element={<TotalDonations />} />
           <Route path="leaderboard" element={<LeaderBoard />} />
           <Route path="volunteers" element={<Volunteers />} />
+          <Route path="profile" element={<Profile />} />
           <Route path="settings" element={<Settings />} />
         </Route>
       </Routes>

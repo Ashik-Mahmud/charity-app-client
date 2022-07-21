@@ -1,7 +1,16 @@
 import { MdOutlineDashboard } from "react-icons/md";
-import { Link, NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet, useNavigate } from "react-router-dom";
+import Cookies from "universal-cookie";
 
 const Dashboard = () => {
+  const navigate = useNavigate();
+  const cookie = new Cookies();
+  /* Handle Log Out  */
+  const handleLogOut = () => {
+    cookie.remove("token");
+    cookie.remove("user");
+    navigate("/login");
+  };
   return (
     <div>
       <div>
@@ -46,16 +55,19 @@ const Dashboard = () => {
                       className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
                     >
                       <li>
-                        <a className="justify-between" href="/">
+                        <Link
+                          to="dashboard/profile"
+                          className="justify-between"
+                        >
                           Profile
                           <span className="badge">New</span>
-                        </a>
+                        </Link>
                       </li>
                       <li>
-                        <a href="/">Settings</a>
+                        <Link to="/dashboard/settings">Settings</Link>
                       </li>
                       <li>
-                        <a href="/">Logout</a>
+                        <button onClick={handleLogOut}>Logout</button>
                       </li>
                     </ul>
                   </div>
@@ -93,6 +105,9 @@ const Dashboard = () => {
               </li>
               <li>
                 <NavLink to="/dashboard/leaderboard">Leader board</NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/profile">Profile</NavLink>
               </li>
               <li>
                 <NavLink to="/dashboard/settings">Settings</NavLink>

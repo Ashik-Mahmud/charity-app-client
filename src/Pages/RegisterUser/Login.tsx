@@ -1,17 +1,27 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { MdOutlineArrowBackIos } from "react-icons/md";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Cookies from "universal-cookie";
+import { useAppSelector } from "../../Store/store";
 
 const Login = () => {
   const navigate = useNavigate();
-  /* init cookies */
-  const cookies = new Cookies();
+  const { user } = useAppSelector((state) => state.loginUser);
 
   const location: any = useLocation();
   const from = location?.state?.from?.pathname || "/";
+
+  useEffect(() => {
+    if (user) {
+      navigate(from, { replace: true });
+    }
+  }, [user, navigate, from]);
+
+  /* init cookies */
+  const cookies = new Cookies();
+
   /*  pick input values from */
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");

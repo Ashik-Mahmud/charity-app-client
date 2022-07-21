@@ -2,11 +2,7 @@ import Cookies from "universal-cookie";
 import { useAppSelector } from "../../Store/store";
 const Overview = () => {
   const cookies = new Cookies();
-  console.log(cookies.get("token"));
-
   const user = useAppSelector((state) => state.loginUser);
-
-  console.log(user.loading);
 
   return (
     <div className="grid place-items-center min-h-[80vh]">
