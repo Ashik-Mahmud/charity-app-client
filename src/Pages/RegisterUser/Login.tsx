@@ -1,11 +1,38 @@
+import axios from "axios";
+import React, { useState } from "react";
+import toast from "react-hot-toast";
 import { MdOutlineArrowBackIos } from "react-icons/md";
 import { Link, useNavigate } from "react-router-dom";
+import Cookies from "universal-cookie";
 
 const Login = () => {
   const navigate = useNavigate();
+  const cookies = new Cookies();
+  /*  pick input values from */
+  const [username, setUsername] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+
+  /* Handle login  */
+  const handleLogin = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (!username) return toast.error("Username is required.");
+    if (!password) return toast.error("Password is required.");
+    await axios
+      .post(`http://localhost:5000/api/login`, { username, password })
+      .then((res) => {
+        const { token, username, success } = res.data;
+        if (success) {
+          cookies.set("token", token, { path: "/" });
+          navigate("/dashboard");
+        }
+      })
+      .catch((err) => toast.error(err.response.data.message));
+  };
+
   return (
     <div className="grid place-items-center min-h-screen">
       <form
+        onSubmit={handleLogin}
         action=""
         className="sm:w-1/2 p-5 sm:flex items-center justify-between shadow rounded-md border-8 border-slate-50"
       >
@@ -31,6 +58,8 @@ const Login = () => {
               type="text"
               placeholder="Username here"
               className="input input-bordered w-full"
+              onChange={(e) => setUsername(e.target.value)}
+              value={username}
             />
           </div>
           <div className="form-control w-full">
@@ -41,6 +70,8 @@ const Login = () => {
               type="password"
               placeholder="Password here"
               className="input input-bordered w-full"
+              onChange={(e) => setPassword(e.target.value)}
+              value={password}
             />
           </div>
           <div className="my-5 text-center">
