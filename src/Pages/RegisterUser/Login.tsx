@@ -7,7 +7,9 @@ import Cookies from "universal-cookie";
 
 const Login = () => {
   const navigate = useNavigate();
+  /* init cookies */
   const cookies = new Cookies();
+
   /*  pick input values from */
   const [username, setUsername] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -20,9 +22,10 @@ const Login = () => {
     await axios
       .post(`http://localhost:5000/api/login`, { username, password })
       .then((res) => {
-        const { token, username, success } = res.data;
+        const { token, user, success } = res.data;
         if (success) {
           cookies.set("token", token, { path: "/" });
+          cookies.set("user", user, { path: "/" });
           navigate("/dashboard");
         }
       })

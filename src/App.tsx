@@ -1,4 +1,7 @@
+import { useEffect } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
+import Cookies from "universal-cookie";
+import { setUser } from "./Features/LoginUser/LoginUserSlice";
 import About from "./Pages/About/About";
 import Contact from "./Pages/Contact/Contact";
 import AddEvent from "./Pages/Dashboard/AddEvent/AddEvent";
@@ -19,7 +22,18 @@ import Login from "./Pages/RegisterUser/Login";
 import Register from "./Pages/RegisterUser/Register";
 import Footer from "./Shared/Footer";
 import Header from "./Shared/Header";
+import { useAppDispatch } from "./Store/store";
 function App() {
+  /* init cookies */
+  const cookies = new Cookies();
+  /* init redux */
+  const dispatch = useAppDispatch();
+  const loggedInUser = cookies.get("user");
+
+  useEffect(() => {
+    dispatch(setUser(loggedInUser));
+  }, [dispatch, loggedInUser]);
+
   const { pathname } = useLocation();
   return (
     <>

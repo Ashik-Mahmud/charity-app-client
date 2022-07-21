@@ -1,8 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import loginUserReducer from "../Features/LoginUser/LoginUserSlice";
 
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    loginUser: loginUserReducer,
+  },
 });
 
 export default store;
